@@ -1,7 +1,12 @@
 # AStar-For-JobSystem
 基于JobSystem的A星寻路算法的测试脚本：
 ```csharp
- public class Test : MonoBehaviour
+using System.Collections;
+using System.Collections.Generic;
+using JFramework.AStar;
+using UnityEngine;
+
+public class Test : MonoBehaviour
 {
     public int mapW;
     public int mapH;
@@ -17,7 +22,7 @@
             }
         }
 
-        AStarManager.InitMap(map); //初始化可行走的地图
+        AStarManager.SetMap(map); //初始化可行走的地图
     }
 
     private void Update()
@@ -25,7 +30,7 @@
         if (Input.GetMouseButtonDown(0)) //按下鼠标
         {
             //起点位置
-            var start = new AStarNode(0, 0);
+            var start = new AStarNode(Vector2Int.zero);
             //鼠标点击位置
             var position = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             //设置为格子的位置
